@@ -15,8 +15,13 @@
     "files": [
       "**/*",
       "!dist",
-      "!node_modules",
       "!*.log"
+    ],
+    "extraResources": [
+      {
+        "from": "node_modules/electron/dist/ffmpeg.dll",
+        "to": "ffmpeg.dll"
+      }
     ],
     "mac": {
       "category": "public.app-category.utilities",
