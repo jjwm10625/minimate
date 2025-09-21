@@ -1,0 +1,36 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build app
+        run: npm run dist
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ runner.os }}-build
+          path: dist/
+
+
