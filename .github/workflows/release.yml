@@ -21,10 +21,10 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build app
-        run: npm run dist
+        run: npx electron-builder --publish never
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -50,4 +50,3 @@ jobs:
             dist/**/*.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
