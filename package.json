@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "A lightweight tray utility for custom icons (MiniMate)",
   "author": "조영서 <choyeongseo950@gmail.com>",
+  "homepage": "https://github.com/jjwm10625/minimate",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -12,11 +13,10 @@
     "appId": "com.jjwm10625.minimate",
     "productName": "MiniMate",
     "files": [
-      "main.js",
-      "index.html",
-      "renderer.js",
-      "assets/**",
-      "icons/**"
+      "**/*",
+      "!dist",
+      "!node_modules",
+      "!*.log"
     ],
     "mac": {
       "category": "public.app-category.utilities",
