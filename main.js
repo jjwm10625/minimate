@@ -10,7 +10,7 @@ let currentTrayImage = null;
 let gifFramesCache = null;  
 
 app.on("ready", () => {
-  const iconPath = path.join(__dirname, "default.png");
+  const iconPath = path.join(__dirname, "assets", "default.png");
   let defaultImg = resizeImageKeepAspect(nativeImage.createFromPath(iconPath));
   tray = new Tray(defaultImg);
   currentTrayImage = defaultImg;
@@ -34,12 +34,10 @@ function setIconSize(newSize) {
   console.log(`트레이 아이콘 크기 변경: ${trayIconSize}px`);
 
   if (gifFramesCache) {
-    // GIF 전체 프레임 리사이즈
     gifFramesCache.icons = gifFramesCache.icons.map(icon =>
       resizeImageKeepAspect(icon, trayIconSize)
     );
   } else if (currentTrayImage && !currentTrayImage.isEmpty()) {
-    // PNG/JPG 아이콘 리사이즈
     const resizedImage = resizeImageKeepAspect(currentTrayImage, trayIconSize);
     tray.setImage(resizedImage);
   }

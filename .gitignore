@@ -1,6 +1,14 @@
+# Node modules
 node_modules/
+
+# Build output
 dist/
 out/
-build/
-*.log
+
+# System files
 .DS_Store
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
