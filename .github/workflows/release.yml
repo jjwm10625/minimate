@@ -5,12 +5,15 @@ on:
     tags:
       - "v*"   # 예: v1.0.1 태그를 푸시할 때 실행됨
 
+permissions:
+  contents: write   # <-- Release 생성에 꼭 필요
+
 jobs:
   release:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-latest, windows-latest] # 맥, 윈도우 둘 다 실행
+        os: [macos-latest, windows-latest]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
